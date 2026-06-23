@@ -28,7 +28,7 @@ body::after{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;op
 .lang-btn:hover{color:var(--ink-soft)}
 .lang-btn.active{color:var(--cypress);border-bottom-color:var(--cypress)}
 .letter{width:calc(100% - 48px);max-width:680px;margin:0 auto;padding:120px 0 40px}
-.seal{text-align:center;margin-bottom:56px}
+.seal{text-align:center;margin-bottom:56px}.seal .eyebrow{margin-bottom:12px}
 .seal svg{width:120px;filter:drop-shadow(0 10px 16px rgba(0,0,0,.4))}
 .eyebrow{font-family:var(--sans);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--cypress);margin-top:22px}
 h1{font-family:var(--script);font-size:72px;line-height:.82;font-weight:400;margin:28px 0 0}
@@ -56,7 +56,7 @@ footer{text-align:center;padding:48px 0 80px;font-family:var(--sans);font-size:1
 footer .tag{font-style:italic;font-family:var(--text);text-transform:none;letter-spacing:0;font-size:17px;color:var(--cypress);margin-bottom:14px}
 .thanks{display:none;text-align:center;padding:24px}
 .thanks p{font-style:italic;font-size:19px;color:var(--cypress);margin:0}
-@media(max-width:640px){body{font-size:17px}.letter{padding-top:88px}h1{font-size:56px;margin-top:22px}.facts{grid-template-columns:1fr}.opt-in h2{font-size:27px}form{flex-direction:column}form button{padding:14px}}
+@media(max-width:640px){body{font-size:17px}.letter{padding-top:88px}h1{font-size:48px;margin-top:32px;line-height:.9}.facts{grid-template-columns:1fr}.opt-in h2{font-size:27px}form{flex-direction:column}form button{padding:14px}}
 </style>
 </head>
 <body>
@@ -184,7 +184,7 @@ document.getElementById('emailForm').addEventListener('submit',function(e){
   btn.disabled=true;
   btn.textContent='...';
   errEl.style.display='none';
-  fetch(GOOGLE_SCRIPT_URL,{method:'POST',body:JSON.stringify({email:em,lang:document.documentElement.lang,source:'altrove'}),headers:{'Content-Type':'application/json'}})
+  fetch(GOOGLE_SCRIPT_URL,{method:'POST',body:JSON.stringify({email:em,lang:document.documentElement.lang,source:'altrove'}),headers:{'Content-Type':'text/plain;charset=utf-8'}})
     .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
     .then(function(){
       form.style.display='none';
